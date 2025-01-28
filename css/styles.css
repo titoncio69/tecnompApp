@@ -1,0 +1,486 @@
+/* Fondo de la página */
+body {
+    background-image: url('../images/FONDO.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #000;
+}
+
+/* Botón de scroll al inicio */
+#scroll-to-top {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#scroll-to-top.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+#scroll-to-top:hover {
+    transform: scale(1.2);
+}
+
+#scroll-to-top video {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+}
+
+
+
+
+
+.gallery-image {
+    position: relative;
+    width: 100%;
+    max-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.gallery-image img {
+    width: auto; /* Mantiene las proporciones */
+    max-width: 80%; /* Ajusta el tamaño máximo horizontal */
+    height: auto; /* Mantiene las proporciones */
+    max-height: 60vh; /* Ajusta el tamaño máximo vertical */
+    object-fit: contain; /* Asegura que toda la imagen sea visible */
+    object-position: center; /* Centra la imagen */
+    display: block; /* Asegura que la imagen no tenga espacio alrededor */
+    margin: auto; /* Centra la imagen horizontalmente */
+    margin-top: -20px; /* Ajusta la posición vertical */
+    background-color: #ffffff; /* Fondo blanco por si la imagen no llena toda la caja */
+}
+
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ef7A3B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn:hover {
+    background-color: #d9632a;
+}
+
+/* Redes Sociales */
+#redes-sociales {
+    background-color: #326B92;
+    color: white;
+}
+
+.social-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    color: #326B92;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    border: 2px solid transparent;
+}
+
+.social-btn.instagram {
+    border: 2px solid #E4405F;
+}
+
+.social-btn.linkedin {
+    border: 2px solid #0077B5;
+}
+
+.social-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.instagram:hover {
+    background-color: #E4405F;
+    color: white;
+}
+
+.linkedin:hover {
+    background-color: #0077B5;
+    color: white;
+}
+
+/* Contacto */
+.contact-info p {
+    margin-top: 15px;
+}
+
+.contact-info,
+#contact-form {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.contact-info:hover,
+#contact-form:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: #326B92;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Sección de valores */
+#nuestros-valores {
+    background-color: #ef7A3B;
+    padding: 50px 0;
+}
+
+#nuestros-valores h2 {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    flex: 1 1 30%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 40px;
+    color: #ef7A3B;
+    margin-bottom: 20px;
+}
+
+.card h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 100%;
+    }
+}
+
+#quienes-somos {
+    padding: 20px 10px;
+    background-image: url('../images/fondo_lineas.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#quienes-somos .card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#quienes-somos h2 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#quienes-somos p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #quienes-somos {
+        padding: 15px 10px;
+    }
+
+    #quienes-somos .card {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    #quienes-somos h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    #quienes-somos p {
+        font-size: 14px;
+    }
+}
+
+#logo {
+    text-align: center;
+    background-image: url('images/FONDO.png');
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 20px 0;
+}
+
+#logo img {
+    max-width: 300px;
+    height: auto;
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 96vh;
+    object-fit: contain;
+    object-position: center;
+    background-color: #ffffff;
+}
+
+#inicio-carousel {
+    height: 75vh;
+    margin-bottom: 100px;
+}
+
+.carousel {
+    background-image: url('images/fondo_lineas.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+nav.navbar {
+    background-color: #326B92 !important;
+    border-bottom: 2px solid #ef7A3B;
+}
+
+nav.navbar .nav-link {
+    color: rgb(255, 255, 255) !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav.navbar .nav-link:hover {
+    color: #ef7A3B !important;
+}
+
+/* Fondo de la galería */
+.client-gallery {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Fondo blanco */
+    z-index: 1000;
+    box-shadow: none; /* Quita la sombra */
+    border: none; /* Quita cualquier borde */
+}
+
+/* Contenedor para la imagen */
+.gallery-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    background-color: transparent; /* Fondo transparente */
+    box-shadow: none; /* Quita la sombra */
+    border: none; /* Quita cualquier borde */
+}
+
+
+/* Imagen centrada */
+.gallery-image {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Fondo transparente */
+    box-shadow: none; /* Quita la sombra */
+    border: none; /* Quita cualquier borde */
+}
+
+.gallery-image img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    background-color: transparent; /* Fondo transparente */
+    box-shadow: none; /* Quita la sombra */
+    border: none; /* Quita cualquier borde */
+}
+
+/* Texto fijo en la parte inferior */
+#client-name {
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior */
+    left: 0;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    padding: 10px 0; /* Espaciado interno */
+    background-color: white; /* Asegura fondo blanco solo para el texto */
+    z-index: 1001; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Botones de navegación */
+.gallery-buttons {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-50%);
+}
+
+.gallery-buttons button {
+    background-color: #326B92; /* Color azul */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.gallery-buttons button:hover {
+    transform: scale(1.2);
+    background-color: #555;
+}
+
+#prev-btn {
+    position: absolute;
+    left: 20px; /* Espaciado desde el borde izquierdo */
+}
+
+#next-btn {
+    position: absolute;
+    right: 20px; /* Espaciado desde el borde derecho */
+}
+
+/* Botón de cerrar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ef7A3B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn:hover {
+    background-color: #d9632a;
+}
+
+#send-location {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: #326B92;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: block;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease;
+}
+
+#send-location:hover {
+    background-color: #ef7A3B;
+}
+
+
