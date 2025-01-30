@@ -9,8 +9,9 @@ import ContactForm from './components/ContactForm';
 import './App.css';
 import ValuesSection from "./components/ValuesSection"; 
 import CompanyLogo from './components/CompanyLogo';
-import Footer from "./components/Footer"; // Importa el Footer
-import ScrollToTop from "./components/ScrollToTop"; // 🔹 Importa el botón flotante
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import OurServices from "./components/OurServices";
 
 function App() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -42,6 +43,7 @@ function App() {
                 { text: "¿Quiénes Somos?", link: "#quienes-somos" },
                 { text: "Nuestros Valores", link: "#nuestros-valores" },
                 { text: "Nuestros Clientes", link: "#nuestros-clientes" },
+                { text: "Nuestros Servicios", link: "#nuestros-servicios" },  // ✅ Añadido
                 { text: "Redes Sociales", link: "#redes-sociales" },
                 { text: "Contacto", link: "#contacto" }
               ].map((item, index) => (
@@ -50,13 +52,13 @@ function App() {
                   href={item.link}
                   sx={{
                     color: 'black',
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'acumin-pro', sans-serif",
                     fontSize: '1rem',
                     fontWeight: 'bold',
                     textTransform: 'none',
                     mx: 1,
                     transition: "color 0.3s ease-in-out",
-                    "&:hover": { color: "#326B92" } // Cambia color al pasar el mouse
+                    "&:hover": { color: "#326B92" }
                   }}
                 >
                   {item.text}
@@ -76,10 +78,13 @@ function App() {
                 { text: "¿Quiénes Somos?", link: "#quienes-somos" },
                 { text: "Nuestros Valores", link: "#nuestros-valores" },
                 { text: "Nuestros Clientes", link: "#nuestros-clientes" },
+                { text: "Nuestros Servicios", link: "#nuestros-servicios" },  // ✅ Añadido
                 { text: "Redes Sociales", link: "#redes-sociales" },
                 { text: "Contacto", link: "#contacto" }
               ].map((item, index) => (
-                <MenuItem key={index} onClick={handleMenuClose} component="a" href={item.link}>
+                <MenuItem key={index} onClick={handleMenuClose} component="a" href={item.link} 
+                  sx={{ fontFamily: "'acumin-pro', sans-serif" }}
+                >
                   {item.text}
                 </MenuItem>
               ))}
@@ -96,11 +101,14 @@ function App() {
         <ValuesSection />
       </Box>
       <ClientsGallery />
+      <Box id="nuestros-servicios">
+        <OurServices />
+      </Box>
       <SocialLinks />
       <ContactForm />
       <Footer />
 
-      {/* 🔹 BOTÓN FLOTANTE PARA SUBIR AL INICIO */}
+      {/* Botón flotante para subir al inicio */}
       <ScrollToTop />
     </>
   );

@@ -28,11 +28,11 @@ const values = [
 function ValuesSection() {
   return (
     <Box sx={{ py: 5, textAlign: "center" }}>
-      {/* Título con la nueva tipografía Poppins */}
+      {/* Título con la nueva tipografía Acumin */}
       <Typography
         variant="h4"
         sx={{
-          fontFamily: "'Poppins', sans-serif", // Fuente Poppins
+          fontFamily: "'acumin-pro', sans-serif", // Aplicando Acumin
           fontWeight: "700", // Negrita
           fontSize: "42px", // Tamaño grande
           color: "black",
@@ -70,6 +70,7 @@ function ValuesSection() {
               <Typography
                 variant="h6"
                 sx={{
+                  fontFamily: "'acumin-pro', sans-serif", // Aplicando Acumin aquí también
                   fontWeight: "bold",
                   mt: 1,
                   fontSize: "20px", // Ajuste del tamaño para mayor visibilidad
@@ -80,6 +81,7 @@ function ValuesSection() {
               <Typography
                 variant="body1"
                 sx={{
+                  fontFamily: "'acumin-pro', sans-serif", // Aplicando Acumin
                   mt: 1,
                   fontWeight: "bold", // Hace el texto más visible
                   fontSize: "1.1rem", // Aumenta el tamaño del texto

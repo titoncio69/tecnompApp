@@ -48,7 +48,7 @@ function ContactForm() {
     }
 
     try {
-      const response = await fetch("/send_email.php", { // Ajusta la ruta según la ubicación de send_email.php
+      const response = await fetch("/send_email.php", { 
         method: "POST",
         body: data,
       });
@@ -76,32 +76,79 @@ function ContactForm() {
   };
 
   return (
-    <Container id="contacto" sx={{ mt: 5, textAlign: 'center' }}>
-      <Typography variant="h3" sx={{ fontWeight: 'bold', textTransform: 'uppercase', mb: 2 }}>
+    <Container id="contacto" sx={{ mt: 10, py: 5, textAlign: 'center' }}>
+      {/* ✅ Título corregido para que se vea igual que "Nuestros Valores" */}
+      <Typography
+        variant="h4"
+        sx={{
+          fontFamily: "'acumin-pro', sans-serif",
+          fontWeight: "700",
+          fontSize: "42px",
+          color: "black",
+          mb: 3,
+        }}
+      >
         CONTÁCTANOS
       </Typography>
 
+      {/* Contenedor del formulario con diseño más alineado a "Nuestros Valores" */}
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          maxWidth: 500,
+          maxWidth: 900, // ✅ Se agrandó para que se vea mejor
           margin: 'auto',
           backgroundColor: '#f5f5f5',
-          p: 3,
+          p: 4,
           borderRadius: 2,
-          boxShadow: 3,
+          boxShadow: 3, // ✅ Se agregó sombra para que se vea más como las tarjetas de "Nuestros Valores"
         }}
       >
-        <TextField label="Nombre" name="name" value={formData.name} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
-        <TextField label="Correo Electrónico" name="email" type="email" value={formData.email} onChange={handleChange} fullWidth required sx={{ mb: 2 }} />
-        <TextField select label="Asunto" name="subject" value={formData.subject} onChange={handleChange} fullWidth required sx={{ mb: 2 }}>
+        <TextField 
+          label="Nombre" 
+          name="name" 
+          value={formData.name} 
+          onChange={handleChange} 
+          fullWidth 
+          required 
+          sx={{ mb: 2, fontFamily: "'acumin-pro', sans-serif" }} 
+        />
+        <TextField 
+          label="Correo Electrónico" 
+          name="email" 
+          type="email" 
+          value={formData.email} 
+          onChange={handleChange} 
+          fullWidth 
+          required 
+          sx={{ mb: 2, fontFamily: "'acumin-pro', sans-serif" }} 
+        />
+        <TextField 
+          select 
+          label="Asunto" 
+          name="subject" 
+          value={formData.subject} 
+          onChange={handleChange} 
+          fullWidth 
+          required 
+          sx={{ mb: 2, fontFamily: "'acumin-pro', sans-serif" }}
+        >
           <MenuItem value="Solicitud">Solicitud</MenuItem>
           <MenuItem value="Contacto">Contacto</MenuItem>
         </TextField>
-        <TextField label="Mensaje" name="message" value={formData.message} onChange={handleChange} fullWidth required multiline rows={4} sx={{ mb: 2 }} />
+        <TextField 
+          label="Mensaje" 
+          name="message" 
+          value={formData.message} 
+          onChange={handleChange} 
+          fullWidth 
+          required 
+          multiline 
+          rows={4} 
+          sx={{ mb: 2, fontFamily: "'acumin-pro', sans-serif" }} 
+        />
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
           <Button variant="contained" component="label">
@@ -116,7 +163,9 @@ function ContactForm() {
           )}
         </Box>
         {error && <Typography color="error" sx={{ mb: 2 }}>{error}</Typography>}
-        <Button type="submit" variant="contained" color="primary" fullWidth>ENVIAR MENSAJE</Button>
+        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ fontFamily: "'acumin-pro', sans-serif" }}>
+          ENVIAR MENSAJE
+        </Button>
       </Box>
 
       <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={() => setSnackbar({ ...snackbar, open: false })}>

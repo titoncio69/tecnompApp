@@ -1,35 +1,42 @@
 import React, { useState } from "react";
-import { Container, Typography, Grid, Card, CardMedia, CardContent } from "@mui/material";
-import GalleryModal from "./GalleryModal";
+import { Container, Typography, Box, Card, CardMedia, CardContent, IconButton } from "@mui/material";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { motion, AnimatePresence } from "framer-motion"; // Importamos Framer Motion
 
 const clients = [
   { name: "Red de Salud UC CHRISTUS", image: "/images/c1.png" },
   { name: "Dávila", image: "/images/c2.png" },
   { name: "Universidad Andrés Bello", image: "/images/c3.png" },
-  { name: "Cliente 4", image: "/images/c4.png" },
-  { name: "Cliente 6", image: "/images/c6.png" },
-  { name: "Cliente 7", image: "/images/c7.png" },
-  { name: "Cliente 8", image: "/images/c8.png" },
+  { name: "INGEVEC", image: "/images/c4.png" },
+  { name: "INIA", image: "/images/c6.png" },
+  { name: "ROVILL", image: "/images/c7.png" },
+  { name: "CREA", image: "/images/c8.png" },
 ];
 
 function ClientsGallery() {
-  const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1: hacia la derecha, -1: hacia la izquierda
 
-  const handleOpen = (index) => {
-    setCurrentIndex(index);
-    setOpen(true);
+  const prevImage = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev === 0 ? clients.length - 1 : prev - 1));
+  };
+
+  const nextImage = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev === clients.length - 1 ? 0 : prev + 1));
   };
 
   return (
-    <Container id="nuestros-clientes" sx={{ mt: 5, textAlign: "center" }}>
-      {/* Título con la nueva tipografía y tamaño ajustado */}
+    <Container id="nuestros-clientes" sx={{ mt: 15, py: 5, textAlign: "center" }}>
+      {/* ✅ Título corregido para que se vea igual que en la imagen */}
       <Typography
         variant="h4"
         sx={{
-          fontFamily: "'Poppins', sans-serif", // Fuente similar a la otra sección
-          fontWeight: "700", // Negrita fuerte
-          fontSize: "42px", // Tamaño grande
+          fontFamily: "'acumin-pro', sans-serif",
+          fontWeight: "700",
+          fontSize: "42px",
           color: "black",
           mb: 3,
         }}
@@ -37,45 +44,64 @@ function ClientsGallery() {
         NUESTROS CLIENTES
       </Typography>
 
-      {/* Muestra solo 3 imágenes con efecto hover */}
-      <Grid container spacing={3} justifyContent="center">
-        {clients.slice(0, 3).map((client, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card
-              sx={{
-                borderRadius: 2,
-                cursor: "pointer",
-                transition: "transform 0.3s ease-in-out",
-                "&:hover": { transform: "scale(1.05)" }, // Efecto hover
-              }}
-              onClick={() => handleOpen(index)}
-            >
-              <CardMedia
-                component="img"
-                image={client.image}
-                alt={client.name}
-                sx={{
-                  width: "100%",
-                  height: "250px",
-                  objectFit: "contain", // Se asegura de que la imagen no se recorte
-                }}
-              />
-              <CardContent>
-                <Typography variant="h6">{client.name}</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      {/* ✅ Contenedor del carrusel con mejor alineación */}
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", position: "relative", maxWidth: "100%", margin: "auto" }}>
+        {/* Flecha Izquierda */}
+        <IconButton onClick={prevImage} sx={{ position: "absolute", left: -50, color: "black", zIndex: 10 }}>
+          <ArrowBackIosNewIcon fontSize="large" />
+        </IconButton>
 
-      {/* Galería Modal con todas las imágenes */}
-      <GalleryModal
-        images={clients.map((client) => client.image)}
-        open={open}
-        onClose={() => setOpen(false)}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-      />
+        {/* Animación de entrada y salida */}
+        <Box sx={{ width: 320, height: 320, overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <AnimatePresence custom={direction} mode="popLayout">
+            <motion.div
+              key={currentIndex}
+              initial={{ x: direction * 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -direction * 100, opacity: 0 }}
+              transition={{ type: "tween", duration: 0.5 }}
+              style={{ position: "absolute" }}
+            >
+              <Card
+                sx={{
+                  borderRadius: 2,
+                  width: 300,
+                  boxShadow: 3,
+                  textAlign: "center",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={clients[currentIndex].image}
+                  alt={clients[currentIndex].name}
+                  sx={{
+                    width: "100%",
+                    height: "250px",
+                    objectFit: "contain",
+                    padding: "10px",
+                  }}
+                />
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontFamily: "'acumin-pro', sans-serif",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {clients[currentIndex].name}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
+        </Box>
+
+        {/* Flecha Derecha */}
+        <IconButton onClick={nextImage} sx={{ position: "absolute", right: -50, color: "black", zIndex: 10 }}>
+          <ArrowForwardIosIcon fontSize="large" />
+        </IconButton>
+      </Box>
     </Container>
   );
 }

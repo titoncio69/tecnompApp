@@ -10,12 +10,12 @@ function Footer() {
         textAlign: "center",
         py: 2, // Espaciado vertical
         mt: 5, // Margen superior
-        fontFamily: "'Poppins', sans-serif", // Aplica la misma fuente
       }}
     >
       <Typography 
         variant="body2" 
         sx={{ 
+          fontFamily: "'acumin-pro', sans-serif", // Aplicando Acumin
           fontWeight: "bold", 
           fontSize: "1rem", // Ajuste de tamaño
           textTransform: "none", // Evita mayúsculas forzadas
