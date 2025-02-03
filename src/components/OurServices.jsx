@@ -24,7 +24,7 @@ const services = [
 
 function OurServices() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1); // 1: derecha, -1: izquierda
+  const [direction, setDirection] = useState(1);
 
   const prevService = () => {
     setDirection(-1);
@@ -38,13 +38,12 @@ function OurServices() {
 
   return (
     <Container id="nuestros-servicios" sx={{ mt: 10, py: 5, textAlign: "center", maxWidth: "100%" }}>
-      {/* ✅ Título corregido para que se vea igual que "Nuestros Valores" */}
       <Typography
         variant="h4"
         sx={{
           fontFamily: "'acumin-pro', sans-serif",
           fontWeight: "700",
-          fontSize: "42px",
+          fontSize: { xs: "32px", md: "42px" },
           color: "black",
           mb: 3,
         }}
@@ -55,34 +54,63 @@ function OurServices() {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           alignItems: "center",
           justifyContent: "center",
-          height: "450px",
+          height: { xs: "auto", md: "450px" },
           borderRadius: 2,
           backgroundColor: "#333",
           overflow: "hidden",
           position: "relative",
           color: "white",
-          padding: "40px",
-          maxWidth: "90%", // ✅ Se asegura que el carrusel no sea demasiado ancho
+          padding: { xs: "20px", md: "40px" },
+          maxWidth: "95%",
           margin: "auto",
         }}
       >
-        {/* Contenido de texto */}
-        <Box sx={{ width: "45%", textAlign: "left", position: "relative", zIndex: 2 }}>
+        {/* Contenedor de Texto */}
+        <Box
+          sx={{
+            width: { xs: "100%", md: "50%" },
+            textAlign: "center",
+            position: "relative",
+            zIndex: 2,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "20px",
+          }}
+        >
           <Typography
-            variant="h4"
-            sx={{ fontFamily: "'acumin-pro', sans-serif", fontWeight: "700", fontSize: "32px", color: "white", mb: 1 }}
+            variant="h5"
+            sx={{
+              fontFamily: "'acumin-pro', sans-serif",
+              fontWeight: "700",
+              fontSize: "24px",
+              color: "white",
+              mb: 2,
+            }}
           >
             {services[currentIndex].title}
           </Typography>
-          <Typography variant="body1" sx={{ fontFamily: "'acumin-pro', sans-serif", fontSize: "1.1rem", fontWeight: "bold", color: "#ddd" }}>
+          <Typography variant="body1" sx={{ fontSize: "1rem", fontWeight: "bold", color: "#ddd", textAlign: "center" }}>
             {services[currentIndex].description}
           </Typography>
         </Box>
 
-        {/* Contenedor de la imagen con flechas */}
-        <Box sx={{ width: "50%", height: "100%", position: "relative" }}>
+        {/* Contenedor de Imagen con puntas redondeadas */}
+        <Box
+          sx={{
+            width: { xs: "100%", md: "50%" },
+            height: { xs: "300px", md: "100%" },
+            position: "relative",
+            mt: { xs: 2, md: 0 },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <AnimatePresence custom={direction} mode="popLayout">
             <motion.div
               key={currentIndex}
@@ -94,15 +122,17 @@ function OurServices() {
                 position: "absolute",
                 width: "100%",
                 height: "100%",
+                minHeight: "300px",
                 backgroundImage: `url(${services[currentIndex].image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                filter: "brightness(0.6)",
+                backgroundRepeat: "no-repeat",
+                filter: "brightness(0.8)",
+                borderRadius: "20px", // 🔹 Agrega puntas redondeadas a la imagen
               }}
             />
           </AnimatePresence>
 
-          {/* 🔹 Flechas movidas dentro del contenedor de imagen */}
           <IconButton onClick={prevService} sx={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "#fff", zIndex: 3 }}>
             <ArrowBackIosNewIcon fontSize="large" />
           </IconButton>

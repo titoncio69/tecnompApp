@@ -20,27 +20,44 @@ function Carousel() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000
+    autoplaySpeed: 3000,
+    adaptiveHeight: true,
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '900px', margin: 'auto', mt: 4 }}>
-      <Slider {...settings}>
-        {images.map((src, index) => (
-          <Box
-            key={index}
-            component="img"
-            src={src}
-            alt={`Slide ${index}`}
-            sx={{
-              width: '100%',
-              height: '500px',
-              objectFit: 'contain',  // Evita que se corten
-              borderRadius: 2
-            }}
-          />
-        ))}
-      </Slider>
+    <Box 
+      sx={{ 
+        width: '100%', 
+        maxWidth: '900px', 
+        margin: '0 auto',  // ✅ Centra el carrusel
+        mt: 4, 
+        px: { xs: 0, md: 2 }, // ✅ Elimina el padding en móviles para evitar desplazamiento lateral
+        display: 'flex',
+        justifyContent: 'center', // ✅ Centra el contenido
+        alignItems: 'center',
+      }}
+    >
+      <Box sx={{ width: '100%' }}> {/* ✅ Asegura que el Slider se mantenga centrado */}
+        <Slider {...settings}>
+          {images.map((src, index) => (
+            <Box
+              key={index}
+              component="img"
+              src={src}
+              alt={`Slide ${index}`}
+              sx={{
+                width: '100%',
+                height: { xs: '320px', sm: '400px', md: '500px' }, // ✅ Ajuste de altura según pantalla
+                maxHeight: '80vh',
+                objectFit: 'cover',
+                borderRadius: 2,
+                display: 'block',
+                margin: '0 auto', // ✅ Centra las imágenes correctamente
+              }}
+            />
+          ))}
+        </Slider>
+      </Box>
     </Box>
   );
 }

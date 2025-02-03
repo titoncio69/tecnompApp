@@ -76,34 +76,48 @@ function ContactForm() {
   };
 
   return (
-    <Container id="contacto" sx={{ mt: 10, py: 5, textAlign: 'center' }}>
-      {/* ✅ Título corregido para que se vea igual que "Nuestros Valores" */}
+    <Container
+      id="contacto"
+      sx={{
+        mt: { xs: 5, md: 10 },  // Ajuste para móviles
+        py: 5,
+        textAlign: 'center', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        width: "100%" // Asegura que el contenido se adapte correctamente
+      }}
+    >
+      {/* ✅ Asegura que el título se vea bien y centrado en móviles */}
       <Typography
         variant="h4"
         sx={{
           fontFamily: "'acumin-pro', sans-serif",
           fontWeight: "700",
-          fontSize: "42px",
+          fontSize: { xs: "32px", md: "42px" },
           color: "black",
           mb: 3,
+          textAlign: "center",
+          width: "100%",
         }}
       >
         CONTÁCTANOS
       </Typography>
 
-      {/* Contenedor del formulario con diseño más alineado a "Nuestros Valores" */}
+      {/* Contenedor del formulario con ajustes de diseño mejorados */}
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          maxWidth: 900, // ✅ Se agrandó para que se vea mejor
-          margin: 'auto',
+          maxWidth: { xs: "100%", sm: 600, md: 900 }, // Se adapta a pantallas pequeñas
+          width: "90%", // Evita que quede demasiado ancho en móviles
           backgroundColor: '#f5f5f5',
           p: 4,
           borderRadius: 2,
-          boxShadow: 3, // ✅ Se agregó sombra para que se vea más como las tarjetas de "Nuestros Valores"
+          boxShadow: 3,
+          textAlign: "left", // Asegura buena alineación del texto dentro del formulario
         }}
       >
         <TextField 
@@ -163,13 +177,25 @@ function ContactForm() {
           )}
         </Box>
         {error && <Typography color="error" sx={{ mb: 2 }}>{error}</Typography>}
-        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ fontFamily: "'acumin-pro', sans-serif" }}>
+        <Button 
+          type="submit" 
+          variant="contained" 
+          color="primary" 
+          fullWidth 
+          sx={{ fontFamily: "'acumin-pro', sans-serif" }}
+        >
           ENVIAR MENSAJE
         </Button>
       </Box>
 
-      <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={() => setSnackbar({ ...snackbar, open: false })}>
-        <Alert severity={snackbar.severity} sx={{ width: '100%' }}>{snackbar.message}</Alert>
+      <Snackbar 
+        open={snackbar.open} 
+        autoHideDuration={3000} 
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      >
+        <Alert severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
       </Snackbar>
     </Container>
   );

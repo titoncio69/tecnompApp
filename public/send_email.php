@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $to = "formulario@tecnomp.cl";
     $from = "formularioweb@tecnomp.cl";
@@ -11,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $headers = "From: $from\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
+    
 
     $boundary = md5(time());
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";

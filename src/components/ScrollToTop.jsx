@@ -4,20 +4,14 @@ import { Box } from "@mui/material";
 function ScrollToTop() {
   const [showButton, setShowButton] = useState(false);
 
-  // Manejo del scroll: Muestra el botón solo si se baja 200px
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
+      setShowButton(window.scrollY > 200);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Función para subir al inicio suavemente
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -28,10 +22,10 @@ function ScrollToTop() {
         onClick={scrollToTop}
         sx={{
           position: "fixed",
-          bottom: 30,
-          left: 20,
-          width: 120, // 🔹 Aumentado para que el logo se vea mejor
-          height: 120, // 🔹 Aumentado para que el logo se vea mejor
+          bottom: { xs: 20, md: 30 },
+          left: { xs: 10, md: 20 },
+          width: { xs: 80, md: 120 },
+          height: { xs: 80, md: 120 },
           borderRadius: "100%",
           cursor: "pointer",
           zIndex: 1000,
@@ -40,7 +34,8 @@ function ScrollToTop() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          "&:hover": { transform: "scale(1.5)" },
+          pointerEvents: "auto", 
+          "&:hover": { transform: "scale(1.2)" },
         }}
       >
         <video
@@ -48,11 +43,14 @@ function ScrollToTop() {
           autoPlay
           loop
           muted
+          playsInline
           style={{
-            width: "100%", // 🔹 Se ajusta dentro del botón más grande
-            height: "100%", // 🔹 Se ajusta dentro del botón más grande
+            width: "100%",
+            height: "100%",
             borderRadius: "100%",
-            animation: "rotateVideo 3s linear infinite",
+            pointerEvents: "none",
+            transform: "rotate(0deg)",
+            animation: "rotateVideo 3s linear infinite", 
           }}
         />
         <style>
