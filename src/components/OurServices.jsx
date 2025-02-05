@@ -17,8 +17,33 @@ const services = [
   },
   {
     title: "CONECTIVIDAD Y REDES",
-    description: "Instalaciones de enlaces punto a punto de 2.4 y 5 GHz, alineación de enlaces, instalación de antenas sectoriales, concentradores y distribución de datos.",
+    description: "Instalación de enlaces punto a punto de 2.4 y 5 GHz, alineación de enlaces, instalación de antenas sectoriales, concentradores y distribución de datos.",
     image: "/images/p3.png",
+  },
+  {
+    title: "CIRCUITO CERRADO DE TELEVISIÓN (CCTV)",
+    description: "Instalación de cámaras IP y análogas, cámaras PTZ, DVR, NVR, cámaras de temperatura y soluciones de videovigilancia para empresas y residencias.",
+    image: "/images/p4.png",
+  },
+  {
+    title: "CONTROL DE ACCESO",
+    description: "Implementación de sistemas biométricos, tarjetas RFID, cerraduras magnéticas, barreras vehiculares y software de control de acceso.",
+    image: "/images/p5.png",
+  },
+  {
+    title: "DETECCIÓN DE INCENDIOS",
+    description: "Instalación de sensores de humo, centrales de detección, puntos de pánico y monitoreo de incendios según normas NFPA.",
+    image: "/images/p6.png",
+  },
+  {
+    title: "ALARMAS DE SEGURIDAD",
+    description: "Configuración de alarmas de intrusión, sensores de movimiento, monitoreo en línea y cableado perimetral de seguridad.",
+    image: "/images/p7.png",
+  },
+  {
+    title: "CERCOS ELÉCTRICOS",
+    description: "Instalación de cercos eléctricos perimetrales con certificación SEC y fuentes auxiliares para seguridad avanzada.",
+    image: "/images/p8.png",
   },
 ];
 
@@ -128,7 +153,7 @@ function OurServices() {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 filter: "brightness(0.8)",
-                borderRadius: "20px", // 🔹 Agrega puntas redondeadas a la imagen
+                borderRadius: "20px",
               }}
             />
           </AnimatePresence>
