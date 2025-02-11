@@ -12,6 +12,21 @@ const clients = [
   { name: "INIA", image: "/images/c6.png" },
   { name: "ROVILL", image: "/images/c7.png" },
   { name: "CREA", image: "/images/c8.png" },
+  { name: "ARAYANAIS LTDA", image: "/images/v2.png" },
+  { name: "PAICAVÍ", image: "/images/v3.png" },
+  { name: "CPA", image: "/images/v4.png" },
+  { name: "Dirección ChileCompra", image: "/images/v5.png" },
+  { name: "ENFLEX", image: "/images/v6.png" },
+  { name: "SERCOAC S.A.", image: "/images/v7.png" },
+  { name: "ACHOCLONADOS", image: "/images/v8.png" },
+  { name: "ALTIUS", image: "/images/v9.png" },
+  { name: "BRIDAK", image: "/images/v10.png" },
+  { name: "APROMAD", image: "/images/v11.png" },
+  { name: "BRAMAL", image: "/images/v12.png" },
+  { name: "DDAF", image: "/images/v13.png" },
+  { name: "Universidad San Sebastian", image: "/images/v14.png" },
+  { name: "RAPAK CHILE", image: "/images/v15.png" },
+  { name: "UIDAT", image: "/images/v16.png" }
 ];
 
 function ClientsGallery() {
