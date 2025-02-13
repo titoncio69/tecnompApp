@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $to = "formulario@tecnomp.cl";
+    $to = "matias.pintoc@mail.udp.cl";
     $from = "formularioweb@tecnomp.cl";
 
     $name = htmlspecialchars($_POST['name']);
