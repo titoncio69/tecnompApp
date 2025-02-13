@@ -26,7 +26,7 @@ function ScrollToTop() {
           left: { xs: 10, md: 20 },
           width: { xs: 80, md: 120 },
           height: { xs: 80, md: 120 },
-          borderRadius: "100%",
+          borderRadius: "50%",
           cursor: "pointer",
           zIndex: 1000,
           boxShadow: 3,
@@ -34,33 +34,25 @@ function ScrollToTop() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          pointerEvents: "auto", 
+          pointerEvents: "auto",
           "&:hover": { transform: "scale(1.2)" },
+          overflow: "hidden",
         }}
       >
-        <video
+        <Box
+          component="video"
           src="/images/3d.mp4"
           autoPlay
           loop
           muted
           playsInline
-          style={{
+          sx={{
             width: "100%",
             height: "100%",
-            borderRadius: "100%",
+            borderRadius: "50%",
             pointerEvents: "none",
-            transform: "rotate(0deg)",
-            animation: "rotateVideo 3s linear infinite", 
           }}
         />
-        <style>
-          {`
-            @keyframes rotateVideo {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-            }
-          `}
-        </style>
       </Box>
     )
   );

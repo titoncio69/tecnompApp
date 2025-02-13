@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Typography, Box, Card, CardMedia, CardContent, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { motion, AnimatePresence } from "framer-motion"; // Importamos Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
 
+// Lista de clientes ordenada por reconocimiento público
 const clients = [
   { name: "Red de Salud UC CHRISTUS", image: "/images/c1.png" },
   { name: "Dávila", image: "/images/c2.png" },
   { name: "Universidad Andrés Bello", image: "/images/c3.png" },
+  { name: "Universidad San Sebastián", image: "/images/k15.png" },
   { name: "INGEVEC", image: "/images/c4.png" },
   { name: "INIA", image: "/images/c6.png" },
+  { name: "Dirección ChileCompra", image: "/images/k4.png" },
   { name: "ROVILL", image: "/images/c7.png" },
   { name: "CREA", image: "/images/c8.png" },
+  { name: "SERCOAC S.A.", image: "/images/k6.png" },
+  { name: "ENFLEX", image: "/images/k5.png" },
+  { name: "CPA", image: "/images/k3.png" },
   { name: "ARAYANAIS LTDA", image: "/images/k1.png" },
   { name: "PAICAVÍ", image: "/images/k2.png" },
-  { name: "CPA", image: "/images/k3.png" },
-  { name: "Dirección ChileCompra", image: "/images/k4.png" },
-  { name: "ENFLEX", image: "/images/k5.png" },
-  { name: "SERCOAC S.A.", image: "/images/k6.png" },
   { name: "ACHOCLONADOS", image: "/images/k7.png" },
   { name: "ALTIUS", image: "/images/k8.png" },
   { name: "BRIDAK", image: "/images/k9.png" },
   { name: "APROMAD", image: "/images/k10.png" },
   { name: "BRAMAL", image: "/images/k11.png" },
   { name: "DDAF", image: "/images/v13.png" },
-  { name: "Universidad San Sebastian", image: "/images/k15.png" },
   { name: "RAPAK CHILE", image: "/images/k12.png" },
   { name: "UIDAT", image: "/images/k13.png" }
 ];
 
 function ClientsGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1); // 1: hacia la derecha, -1: hacia la izquierda
+  const [direction, setDirection] = useState(1);
+
+  // Función para avanzar automáticamente
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev === clients.length - 1 ? 0 : prev + 1));
+    }, 3000); // Avanza cada 3 segundos
+
+    return () => clearInterval(interval); // Limpia el intervalo al desmontar
+  }, []);
 
   const prevImage = () => {
     setDirection(-1);
@@ -45,7 +56,6 @@ function ClientsGallery() {
 
   return (
     <Container id="nuestros-clientes" sx={{ mt: 15, py: 5, textAlign: "center" }}>
-      {/* ✅ Título corregido para que se vea igual que en la imagen */}
       <Typography
         variant="h4"
         sx={{
@@ -59,14 +69,11 @@ function ClientsGallery() {
         NUESTROS CLIENTES
       </Typography>
 
-      {/* ✅ Contenedor del carrusel con mejor alineación */}
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", position: "relative", maxWidth: "100%", margin: "auto" }}>
-        {/* Flecha Izquierda */}
         <IconButton onClick={prevImage} sx={{ position: "absolute", left: -50, color: "black", zIndex: 10 }}>
           <ArrowBackIosNewIcon fontSize="large" />
         </IconButton>
 
-        {/* Animación de entrada y salida */}
         <Box sx={{ width: 320, height: 320, overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center" }}>
           <AnimatePresence custom={direction} mode="popLayout">
             <motion.div
@@ -112,7 +119,6 @@ function ClientsGallery() {
           </AnimatePresence>
         </Box>
 
-        {/* Flecha Derecha */}
         <IconButton onClick={nextImage} sx={{ position: "absolute", right: -50, color: "black", zIndex: 10 }}>
           <ArrowForwardIosIcon fontSize="large" />
         </IconButton>

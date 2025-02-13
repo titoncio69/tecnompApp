@@ -3,7 +3,7 @@ import { Container, Typography, Box } from '@mui/material';
 
 function AboutUs() {
   return (
-    <Container id="quienes-somos" sx={{ mt: 10, py: 5, textAlign: 'center' }}>
+    <Container id="quienes-somos" sx={{ mt: 6, py: 5, textAlign: 'center' }}>
       {/* ✅ Título corregido para que se vea igual que "Nuestros Valores" */}
       <Typography
         variant="h4"

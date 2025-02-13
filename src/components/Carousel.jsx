@@ -5,39 +5,39 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Box } from '@mui/material';
 
 const images = [
-  '/images/f1.png',
-  '/images/f2.png',
-  '/images/f3.png',
-  '/images/f4.png',
-  '/images/f5.png',
+  '/images/o1.png',
+  '/images/o2.png',
+  '/images/o3.png',
+  '/images/o4.png',
+  '/images/o5.png',
 ];
 
 function Carousel() {
   const settings = {
-    dots: true,
+    dots: true,  
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    adaptiveHeight: true,
+    adaptiveHeight: false, 
   };
 
   return (
     <Box 
       sx={{ 
-        width: '100%', 
-        maxWidth: '900px', 
-        margin: '0 auto',  // ✅ Centra el carrusel
-        mt: 4, 
-        px: { xs: 0, md: 2 }, // ✅ Elimina el padding en móviles para evitar desplazamiento lateral
+        width: '100%',  
+        margin: '0 auto',  
+        mt: 4,  
+        px: { xs: 0, md: 0 },  
         display: 'flex',
-        justifyContent: 'center', // ✅ Centra el contenido
+        justifyContent: 'center', 
         alignItems: 'center',
+        overflow: 'hidden',
       }}
     >
-      <Box sx={{ width: '100%' }}> {/* ✅ Asegura que el Slider se mantenga centrado */}
+      <Box sx={{ width: '100%' }}>
         <Slider {...settings}>
           {images.map((src, index) => (
             <Box
@@ -46,13 +46,11 @@ function Carousel() {
               src={src}
               alt={`Slide ${index}`}
               sx={{
-                width: '100%',
-                height: { xs: '320px', sm: '400px', md: '500px' }, // ✅ Ajuste de altura según pantalla
+                width: '100vw', // 🔹 Ahora ocupa todo el ancho de la ventana
+                height: { xs: '350px', sm: '450px', md: '500px', lg: '550px' },
                 maxHeight: '80vh',
                 objectFit: 'cover',
-                borderRadius: 2,
                 display: 'block',
-                margin: '0 auto', // ✅ Centra las imágenes correctamente
               }}
             />
           ))}

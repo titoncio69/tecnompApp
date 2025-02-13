@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Typography, Box, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -60,6 +60,14 @@ function OurServices() {
     setDirection(1);
     setCurrentIndex((prev) => (prev === services.length - 1 ? 0 : prev + 1));
   };
+
+  // Avanzar automáticamente cada 3 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextService();
+    }, 3000);
+    return () => clearInterval(interval); // Limpia el intervalo cuando se desmonta el componente
+  }, [currentIndex]);
 
   return (
     <Container id="nuestros-servicios" sx={{ mt: 10, py: 5, textAlign: "center", maxWidth: "100%" }}>

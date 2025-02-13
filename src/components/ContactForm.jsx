@@ -79,23 +79,23 @@ function ContactForm() {
     <Container
       id="contacto"
       sx={{
-        mt: { xs: 5, md: 10 },  // Ajuste para móviles
+        mt: { xs: 5, md: 10 },
         py: 5,
         textAlign: 'center', 
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
-        width: "100%" // Asegura que el contenido se adapte correctamente
+        width: "100%" 
       }}
     >
-      {/* ✅ Asegura que el título se vea bien y centrado en móviles */}
+      {/* ✅ Título con el nuevo color */}
       <Typography
         variant="h4"
         sx={{
           fontFamily: "'acumin-pro', sans-serif",
           fontWeight: "700",
           fontSize: { xs: "32px", md: "42px" },
-          color: "black",
+          color: "#326B92", // 🔹 Color principal actualizado
           mb: 3,
           textAlign: "center",
           width: "100%",
@@ -104,20 +104,20 @@ function ContactForm() {
         CONTÁCTANOS
       </Typography>
 
-      {/* Contenedor del formulario con ajustes de diseño mejorados */}
+      {/* Contenedor del formulario */}
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          maxWidth: { xs: "100%", sm: 600, md: 900 }, // Se adapta a pantallas pequeñas
-          width: "90%", // Evita que quede demasiado ancho en móviles
+          maxWidth: { xs: "100%", sm: 600, md: 900 },
+          width: "90%", 
           backgroundColor: '#f5f5f5',
           p: 4,
           borderRadius: 2,
           boxShadow: 3,
-          textAlign: "left", // Asegura buena alineación del texto dentro del formulario
+          textAlign: "left",
         }}
       >
         <TextField 
@@ -164,25 +164,41 @@ function ContactForm() {
           sx={{ mb: 2, fontFamily: "'acumin-pro', sans-serif" }} 
         />
 
+        {/* Botón de Seleccionar archivo con color personalizado */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-          <Button variant="contained" component="label">
+          <Button 
+            variant="contained" 
+            component="label" 
+            sx={{ backgroundColor: "#326B92", "&:hover": { backgroundColor: "#285a7f" } }} // 🔹 Color personalizado
+          >
             Seleccionar archivo
             <input type="file" hidden onChange={handleFileChange} />
           </Button>
           {formData.file && (
             <>
               <Typography variant="body2">{formData.file.name}</Typography>
-              <Button variant="outlined" color="error" onClick={handleFileRemove}>Eliminar</Button>
+              <Button 
+                variant="outlined" 
+                color="error" 
+                onClick={handleFileRemove}
+              >
+                Eliminar
+              </Button>
             </>
           )}
         </Box>
         {error && <Typography color="error" sx={{ mb: 2 }}>{error}</Typography>}
+
+        {/* Botón de enviar con color personalizado */}
         <Button 
           type="submit" 
           variant="contained" 
-          color="primary" 
           fullWidth 
-          sx={{ fontFamily: "'acumin-pro', sans-serif" }}
+          sx={{ 
+            fontFamily: "'acumin-pro', sans-serif",
+            backgroundColor: "#326B92", // 🔹 Color principal actualizado
+            "&:hover": { backgroundColor: "#285a7f" } // 🔹 Color en hover
+          }}
         >
           ENVIAR MENSAJE
         </Button>
